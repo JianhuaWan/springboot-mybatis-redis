@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.IzuiyouDao">
+    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Izuiyou">
+        <result column="id" property="id"/>
+        <result column="content" property="content"/>
+        <result column="imgs" property="imgs"/>
+        <result column="urls" property="urls"/>
+        <result column="avatar_urls" property="avatar_urls"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, content, imgs, urls,avatar_urls,name
+    </sql>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from izuiyou
+        where id = #{id}
+    </select>
+    <select id="findData" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from izuiyou limit #{index},#{pageSize}
+    </select>
+    <select id="findDatarand" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from izuiyou Order By rand() Limit 20
+    </select>
+
+
+    <select id="findAllCity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from izuiyou
+    </select>
+
+    <insert id="saveCity" parameterType="Izuiyou" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        izuiyou(id,content,imgs,urls,avatar_urls,name)
+        values
+        (#{id},#{content},#{imgs},#{urls},#{avatar_urls},#{name})
+    </insert>
+
+    <delete id="deleteCity" parameterType="java.lang.Long">
+        delete from
+        izuiyou
+        where
+        id = #{id}
+    </delete>
+
+</mapper>
