@@ -5,6 +5,7 @@ import org.spring.springboot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,14 @@ public class CityRestController {
 
     @RequestMapping(value = "/api/city", method = RequestMethod.GET)
     public List<City> findAllCity() {
-        return cityService.findALLCity();
+        List<City> cities = new ArrayList<>();
+        City city = new City();
+        city.setCityName("111");
+        city.setId(1l);
+        city.setDescription("222");
+        cities.add(city);
+//        return cityService.findALLCity();
+        return cities;
     }
 
     @RequestMapping(value = "/api/city/{id}", method = RequestMethod.GET)
