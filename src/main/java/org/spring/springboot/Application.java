@@ -15,7 +15,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  */
 // Spring Boot 应用的标识
 @SpringBootApplication
-//@EnableScheduling //开启定时任务
+@EnableScheduling //开启定时任务
 // mapper 接口类扫描包配置
 @MapperScan("org.spring.springboot.dao")
 public class Application {
