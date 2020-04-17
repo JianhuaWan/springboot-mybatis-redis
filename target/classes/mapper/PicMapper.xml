@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.PicDao">
+    <resultMap id="BaseResultMap" type="org.spring.springboot.domain.Pic">
+        <result column="definfo" property="definfo"/>
+        <result column="defphone" property="defphone"/>
+        <result column="defpic" property="defpic"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        definfo, defphone, defpic
+    </sql>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from smartup
+        where definfo = #{definfo}
+    </select>
+    <select id="findData" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from smartup limit #{index},#{pageSize}
+    </select>
+    <select id="findDatarand" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from smartup Order By rand() Limit 20
+    </select>
+
+
+    <select id="findAllCity" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from smartup
+    </select>
+
+    <insert id="saveCity" parameterType="Pic">
+        insert into
+        smartup(definfo,defphone,defpic)
+        values
+        (#{definfo},#{defphone},#{defpic})
+    </insert>
+
+    <delete id="deleteCity" parameterType="java.lang.Long">
+        delete from
+        smartup
+        where
+        definfo = #{definfo}
+    </delete>
+
+</mapper>

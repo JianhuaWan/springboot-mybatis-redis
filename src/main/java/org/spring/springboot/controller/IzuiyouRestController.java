@@ -23,7 +23,11 @@ public class IzuiyouRestController {
     @RequestMapping(value = "/api/insertdata", method = RequestMethod.GET)
     public List<Izuiyou> insertData() {
         List<Izuiyou> izuiyou = cityService.getUserInfoFromAuthority();
-//        cityService.saveIzuiyou(izuiyou);
+        try {
+            cityService.saveIzuiyou(izuiyou);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return izuiyou;
     }
 
