@@ -40,7 +40,7 @@ public class PicController {
         return null;
     }
 
-    @RequestMapping(value = "/api/addfile", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/addfile", method = RequestMethod.POST, produces = "image/png")
     @ResponseBody
     public String handleFileUpload(HttpServletRequest request) {
         MultipartHttpServletRequest params = ((MultipartHttpServletRequest) request);
@@ -54,7 +54,7 @@ public class PicController {
                 try {
                     byte[] bytes = file.getBytes();
                     stream = new BufferedOutputStream(new FileOutputStream(
-                            new File("C://" + file.getOriginalFilename())));
+                            new File("C://photo//" + file.getOriginalFilename())));
                     stream.write(bytes);
                     stream.close();
                 } catch (Exception e) {
