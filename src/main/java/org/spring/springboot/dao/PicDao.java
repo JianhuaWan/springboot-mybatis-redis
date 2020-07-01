@@ -1,6 +1,7 @@
 package org.spring.springboot.dao;
 
 import org.apache.ibatis.annotations.Param;
+import org.spring.springboot.domain.CheckStatusResult;
 import org.spring.springboot.domain.Izuiyou;
 import org.spring.springboot.domain.Pic;
 
@@ -36,6 +37,8 @@ public interface PicDao {
     List<Pic> findData(@Param("index") int index, @Param("pageSize") int pagesize);
 
     List<Pic> findDatarand();
+
+    List<Pic> findStatus();
 
 
 }

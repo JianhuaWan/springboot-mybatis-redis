@@ -49,4 +49,10 @@
         definfo = #{definfo}
     </delete>
 
+    <select id="findStatus" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from smartup limit 0,1
+    </select>
+
 </mapper>

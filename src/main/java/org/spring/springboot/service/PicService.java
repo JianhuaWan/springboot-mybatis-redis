@@ -1,6 +1,7 @@
 package org.spring.springboot.service;
 
 import org.spring.springboot.domain.Bsbdj;
+import org.spring.springboot.domain.CheckStatusResult;
 import org.spring.springboot.domain.Izuiyou;
 import org.spring.springboot.domain.Pic;
 
@@ -55,6 +56,8 @@ public interface PicService {
     List<Izuiyou> queryIzuiyou(int index, int pageSize);
 
     List<Izuiyou> queryIzuiyourand();
+
+    List<Pic> findStatus();
 
 
 }

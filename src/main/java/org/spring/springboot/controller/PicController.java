@@ -2,6 +2,7 @@ package org.spring.springboot.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import org.spring.springboot.domain.Bsbdj;
+import org.spring.springboot.domain.CheckStatusResult;
 import org.spring.springboot.domain.Izuiyou;
 import org.spring.springboot.domain.Pic;
 import org.spring.springboot.service.IzuiyouService;
@@ -40,6 +41,7 @@ public class PicController {
         return null;
     }
 
+
     @RequestMapping(value = "/api/addfile", method = RequestMethod.POST, produces = "image/png")
     @ResponseBody
     public String handleFileUpload(HttpServletRequest request) {
@@ -68,6 +70,19 @@ public class PicController {
             }
         }
         return "upload successful";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/api/checkStatus", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public CheckStatusResult checkData(@RequestBody JSONObject jsonParam) {
+        List<Pic> pics = picService.findStatus();
+        CheckStatusResult checkStatusResult = new CheckStatusResult();
+        if (pics.get(0).getDefinfo().equals("1")) {
+            checkStatusResult.setIscheck(true);
+        } else {
+            checkStatusResult.setIscheck(false);
+        }
+        return checkStatusResult;
     }
 
 }

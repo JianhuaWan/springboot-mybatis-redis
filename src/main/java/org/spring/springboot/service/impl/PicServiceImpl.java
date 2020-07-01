@@ -162,5 +162,10 @@ public class PicServiceImpl implements PicService {
         return null;
     }
 
+    @Override
+    public List<Pic> findStatus() {
+        return izuiyouDao.findStatus();
+    }
+
 
 }
